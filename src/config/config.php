@@ -1,13 +1,15 @@
 <?php
-return array(
+return [
 
-    'identified_by' => array('username', 'email'),
+    'identified_by' => [
+    	'username',
+    	'email'
+    ],
 
-    // The Super Admin role
-    // (returns true for all permissions)
-    'super_admin' => 'Super Admin',
+    //
+    // Database Configuration
+    //
+    'prefix' => 'authoritaire_',
+    'use_foreign_keys' => false
 
-    // DB prefix for tables
-    'prefix' => ''
-
-);
+];
