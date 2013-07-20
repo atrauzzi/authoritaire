@@ -51,8 +51,8 @@ class UserProvider implements UserProviderInterface
      * @param  array  $credentials
      * @return Illuminate\Auth\UserInterface|null
      */
-    public function retrieveByCredentials(array $credentials)
-    {
+    public function retrieveByCredentials(array $credentials) {
+
         // Are we checking by identifier?
         if (array_key_exists('identifier', $credentials)) {
             // Grab each val to be identifed against
@@ -77,8 +77,7 @@ class UserProvider implements UserProviderInterface
                 }
             }
         }
-        else
-        {
+        else {
             // First we will add each credential element to the query as a where clause.
             // Then we can execute the query and, if we found a user, return it in a
             // Eloquent User "model" that will be utilized by the Guard instances.
@@ -106,8 +105,7 @@ class UserProvider implements UserProviderInterface
      * @param  array  $credentials
      * @return bool
      */
-    public function validateCredentials(UserInterface $user, array $credentials)
-    {
+    public function validateCredentials(UserInterface $user, array $credentials) {
         $plain = $credentials['password'];
         // Is user password is valid?
         if(!$this->hasher->check($user->salt.$plain, $user->getAuthPassword())) {

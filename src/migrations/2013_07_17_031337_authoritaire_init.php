@@ -4,13 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class AuthoritaireInit extends Migration {
 
-	protected $prefix;
-
 	protected $useForeignKeys;
 
     public function __construct() {
         // Get the prefix
-        $this->prefix = Config::get('authoritaire::prefix', '');
+        $this->userTable = Config::get('authoritaire::user_table', 'users');
         $this->useForeignKeys = Config::get('authoritaire::use_foreign_keys', false);
     }
 

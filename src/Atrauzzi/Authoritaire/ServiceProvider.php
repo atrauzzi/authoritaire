@@ -30,6 +30,7 @@ class ServiceProvider extends ServiceProvider {
 
         $this->package('atrauzzi/authoritaire');
 
+        /*
         \Auth::extend('verify', function() {
             return new Guard(
                 new VerifyUserProvider(
@@ -39,6 +40,7 @@ class ServiceProvider extends ServiceProvider {
                 \App::make('session')
             );
         });
+        */
 
     }
 
