@@ -1,5 +1,4 @@
-<?php
-namespace Atrauzzi\Authoritaire\Trait;
+<?php namespace Atrauzzi\Authoritaire\Model;
 
 
 trait Authorizable {

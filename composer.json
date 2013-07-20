@@ -1,6 +1,6 @@
 {
     "name": "atrauzzi/authoritaire",
-    "description": "A simple authentication bundle for Laravel 4. It features roles, permissions, password salting and is fully extendable.",
+    "description": "A simple authorization package for Laravel 4.",
     "license": "MIT",
     "authors": [
         {
@@ -9,7 +9,15 @@
             "homepage": "http://profiles.google.com/atrauzzi"
         }
     ],
-    "keywords": ["laravel", "auth", "permissions", "roles", "verify"],
+    "keywords": [
+    	"laravel",
+    	"auth",
+    	"permissions",
+    	"roles",
+    	"verify",
+    	"trait",
+    	"polymorphic"
+    ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "4.0.x"

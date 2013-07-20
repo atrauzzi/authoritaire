@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
 
 class AuthoritaireInit extends Migration {
 
@@ -12,7 +14,7 @@ class AuthoritaireInit extends Migration {
     public function up() {
 
         // Create the role/user relationship table
-        Schema::create('authoritaire_memberships', function ($table) {
+        Schema::create('authoritaire_memberships', function (Blueprint $table) {
 
             $table
             	->integer('authorizable_id')
@@ -33,12 +35,12 @@ class AuthoritaireInit extends Migration {
             $table->primary([
             	'authorizable_id',
             	'authorizable_type'
-            ]);
+            ], 'authoritaire_memberships_primary');
 
         });
 
         // Create the permissions table
-        Schema::create('authoritaire_permissions', function ($table) {
+        Schema::create('authoritaire_permissions', function (Blueprint $table) {
 
     		$table
             	->increments('id')
@@ -60,7 +62,7 @@ class AuthoritaireInit extends Migration {
         });
 
         // Create the roles table
-        Schema::create('authoritaire_roles', function ($table) {
+        Schema::create('authoritaire_roles', function (Blueprint $table) {
 
             $table
             	->increments('id')
@@ -82,7 +84,7 @@ class AuthoritaireInit extends Migration {
         });
 
         // Create the permission/role relationship table
-        Schema::create('authoritaire_role_permissions', function($table) {
+        Schema::create('authoritaire_role_permissions', function (Blueprint $table) {
 
             $table
             	->integer('permission_id')
@@ -108,7 +110,7 @@ class AuthoritaireInit extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop('authoritaire_authorizable_roles');
+		Schema::drop('authoritaire_memberships');
 		Schema::drop('authoritaire_role_permissions');
 		Schema::drop('authoritaire_roles');
 		Schema::drop('authoritaire_permissions');
