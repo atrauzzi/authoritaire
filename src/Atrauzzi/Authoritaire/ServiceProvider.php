@@ -27,21 +27,7 @@ class ServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-
         $this->package('atrauzzi/authoritaire');
-
-        /*
-        \Auth::extend('verify', function() {
-            return new Guard(
-                new VerifyUserProvider(
-                    new BcryptHasher,
-                    \Config::get('auth.model')
-                ),
-                \App::make('session')
-            );
-        });
-        */
-
     }
 
     /**

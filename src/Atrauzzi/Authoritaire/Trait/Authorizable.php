@@ -1,25 +1,29 @@
 <?php
 namespace Atrauzzi\Authoritaire\Trait;
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
 
 trait Authorizable {
 
     public function roles() {
-		return $this
-			->belongsToMany('Atrauzzi\Authoritaire\Model\Role')
-			->withTimestamps()
-		;
+    	return $this
+    		->memberships()
+    		->role()
+    	;
     }
 
-    public function permissions() {
-    	return $this
-    		->belongsToMany(
-    			'Atrauzzi\Authoritaire\Model\Permission'
-    			''
-    		)
-    }
+	public function permissions() {
+		return $this
+			->roles()
+			->permissions()
+		;
+	}
+
+	public function memberships() {
+		return $this
+			->morphMany('Atrauzzi\Authoritaire\Model\Membership', 'authorizable')
+			->withTimestamps()
+		;
+	}
 
 	public function is($checkRoles) {
 
@@ -51,103 +55,4 @@ trait Authorizable {
 
     }
 
-    /**
-     * Is the User a certain Level
-     *
-     * @param  integer $level
-     * @param  string $modifier [description]
-     * @return boolean
-     */
-    public function level($level, $modifier = '>=')
-    {
-        $to_check = $this->getToCheck();
-
-        $max = -1;
-        $min = 100;
-        $levels = array();
-
-        foreach ($to_check->roles as $role)
-        {
-            $max = $role->level > $max
-                ? $role->level
-                : $max;
-
-            $min = $role->level < $min
-                ? $role->level
-                : $min;
-
-            $levels[] = $role->level;
-        }
-
-        switch ($modifier)
-        {
-            case '=':
-                return in_array($level, $levels);
-                break;
-
-            case '>=':
-                return $max >= $level;
-                break;
-
-            case '>':
-                return $max > $level;
-                break;
-
-            case '<=':
-                return $min <= $level;
-                break;
-
-            case '<':
-                return $min < $level;
-                break;
-
-            default:
-                return false;
-                break;
-        }
-    }
-
-    /**
-     * Verified scope
-     *
-     * @param  object $query
-     * @return object
-     */
-    public function scopeVerified($query)
-    {
-        return $query->where('verified', '=', 1);
-    }
-
-    /**
-     * Unverified scope
-     *
-     * @param  object $query
-     * @return object
-     */
-    public function scopeUnverified($query)
-    {
-        return $query->where('verified', '=', 0);
-    }
-
-    /**
-     * Disabled scope
-     *
-     * @param  object $query
-     * @return object
-     */
-    public function scopeDisabled($query)
-    {
-        return $query->where('disabled', '=', 1);
-    }
-
-    /**
-     * Enabled scope
-     *
-     * @param  object $query
-     * @return object
-     */
-    public function scopeEnabled($query)
-    {
-        return $query->where('disabled', '=', 0);
-    }
 }

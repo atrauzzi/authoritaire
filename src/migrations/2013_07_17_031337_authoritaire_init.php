@@ -4,14 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class AuthoritaireInit extends Migration {
 
-	protected $useForeignKeys;
-
-    public function __construct() {
-        // Get the prefix
-        $this->userTable = Config::get('authoritaire::user_table', 'users');
-        $this->useForeignKeys = Config::get('authoritaire::use_foreign_keys', false);
-    }
-
     /**
      * Run the migrations.
      *
@@ -19,51 +11,34 @@ class AuthoritaireInit extends Migration {
      */
     public function up() {
 
-        // Create the users table
-        Schema::create($this->prefix.'users', function($table) {
+        // Create the role/user relationship table
+        Schema::create('authoritaire_memberships', function ($table) {
 
             $table
-            	->increments('id')
+            	->integer('authorizable_id')
             	->unsigned()
-            ;
-
-            $table
-            	->string('username', 30)
             	->index()
             ;
 
-            $table
-            	->string('salted_password', 60)
-            	->index()
-            ;
+            $table->string('authorizable_type');
 
             $table
-            	->string('email', 255)
-            	->index()
-            ;
-
-            $table
-            	->boolean('verified')
-            	->default(0)
-            ;
-
-            $table
-            	->boolean('disabled')
-            	->default(0)
-            ;
-
-            $table
-            	->dateTime('deleted_at')
-            	->nullable()
+            	->integer('role_id')
+            	->unsigned()
             	->index()
             ;
 
             $table->timestamps();
 
+            $table->primary([
+            	'authorizable_id',
+            	'authorizable_type'
+            ]);
+
         });
 
         // Create the permissions table
-        Schema::create($this->prefix.'permissions', function ($table) {
+        Schema::create('authoritaire_permissions', function ($table) {
 
     		$table
             	->increments('id')
@@ -85,7 +60,7 @@ class AuthoritaireInit extends Migration {
         });
 
         // Create the roles table
-        Schema::create($this->prefix.'roles', function ($table) {
+        Schema::create('authoritaire_roles', function ($table) {
 
             $table
             	->increments('id')
@@ -102,47 +77,12 @@ class AuthoritaireInit extends Migration {
             	->nullable()
             ;
 
-            $table->integer('level');
-
             $table->timestamps();
-
-        });
-
-        // Create the role/user relationship table
-        Schema::create($this->prefix.'role_user', function ($table) use ($this->prefix, $this->useForeignKeys) {
-
-            $table
-            	->integer('user_id')
-            	->unsigned()
-            	->index()
-            ;
-
-            $table
-            	->integer('role_id')
-            	->unsigned()
-            	->index()
-            ;
-
-            $table->timestamps();
-
-			if($this->useForeignKeys) {
-				$table
-					->foreign('user_id')
-					->references('id')
-					->on($this->prefix.'users')
-				;
-
-				$table
-					->foreign('role_id')
-					->references('id')
-					->on($this->prefix.'roles')
-				;
-			}
 
         });
 
         // Create the permission/role relationship table
-        Schema::create($this->prefix.'permission_role', function($table) use ($this->prefix, $this->useForeignKeys) {
+        Schema::create('authoritaire_role_permissions', function($table) {
 
             $table
             	->integer('permission_id')
@@ -158,20 +98,6 @@ class AuthoritaireInit extends Migration {
 
             $table->timestamps();
 
-			if($this->useForeignKeys) {
-				$table
-					->foreign('permission_id')
-					->references('id')
-					->on($this->prefix.'permissions')
-				;
-
-				$table
-					->foreign('role_id')
-					->references('id')
-					->on($this->prefix.'roles')
-				;
-			}
-
         });
 
     }
@@ -182,11 +108,10 @@ class AuthoritaireInit extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::drop($this->prefix.'role_user');
-		Schema::drop($this->prefix.'permission_role');
-		Schema::drop($this->prefix.'users');
-		Schema::drop($this->prefix.'roles');
-		Schema::drop($this->prefix.'permissions');
+		Schema::drop('authoritaire_authorizable_roles');
+		Schema::drop('authoritaire_role_permissions');
+		Schema::drop('authoritaire_roles');
+		Schema::drop('authoritaire_permissions');
 	}
 
 }

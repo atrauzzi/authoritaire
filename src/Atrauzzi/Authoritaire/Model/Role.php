@@ -1,51 +1,49 @@
-<?php
-namespace Toddish\Verify\Models;
+<?php namespace Atrauzzi\Authoritaire\Model;
 
-class Role extends BaseModel
-{
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'roles';
+use Illuminate\Database\Eloquent\Model;
+
+
+class Role extends Model {
+
+    protected $table = 'authoritaire_roles';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = array('name', 'description', 'level');
+    protected $fillable = [
+    	'name',
+    	'description',
+    	'level'
+    ];
 
     protected $with = [
     	'permissions'
-    ]
+    ];
 
-    /**
-     * Users
-     *
-     * @return object
-     */
-    public function users()
-    {
-        return $this->belongsToMany(
-                'Toddish\Verify\Models\User',
-                $this->prefix.'role_user'
-            )
-        ->withTimestamps();
+    public function authorizables() {
+    	return $this
+    		->memberships()
+    		->authorizable()
+    	;
     }
 
-    /**
-     * Permissions
-     *
-     * @return object
-     */
-    public function permissions()
-    {
-        return $this->belongsToMany(
-                'Toddish\Verify\Models\Permission',
-                $this->prefix.'permission_role'
-            )
-        ->withTimestamps();
+    public function permissions() {
+		return $this
+			->belongsToMany(
+				'Atrauzzi\Authoritaire\Model\Permission',
+				'authoritaire_role_permissions'
+			)
+			->withTimestamps()
+		;
     }
+
+    public function memberships() {
+    	return $this
+    		->hasMany('Atrauzzi\Authoritaire\Model\Membership')
+    		->withTimestamps()
+    	;
+    }
+
 }
