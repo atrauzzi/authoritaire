@@ -16,6 +16,11 @@ class AuthoritaireInit extends Migration {
         // Create the role/user relationship table
         Schema::create('authoritaire_memberships', function (Blueprint $table) {
 
+    		$table
+            	->increments('id')
+            	->unsigned()
+            ;
+
             $table
             	->integer('authorizable_id')
             	->unsigned()
@@ -32,7 +37,7 @@ class AuthoritaireInit extends Migration {
 
             $table->timestamps();
 
-            $table->primary([
+            $table->index([
             	'authorizable_id',
             	'authorizable_type'
             ], 'authoritaire_memberships_primary');

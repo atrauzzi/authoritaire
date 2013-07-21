@@ -40,10 +40,7 @@ class Role extends Model {
     }
 
     public function memberships() {
-    	return $this
-    		->hasMany('Atrauzzi\Authoritaire\Model\Membership')
-    		->withTimestamps()
-    	;
+    	return $this->hasMany('Atrauzzi\Authoritaire\Model\Membership');
     }
 
 }
