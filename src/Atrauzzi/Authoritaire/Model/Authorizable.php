@@ -12,16 +12,16 @@ trait Authorizable {
 	// https://github.com/laravel/framework/issues/1922
 
 	// A read-only "relation" to obtain all current roles.
-    public function roles() {
+	public function roles() {
 		return $this
 			->belongsToMany(
 				'Atrauzzi\Authoritaire\Model\Role',
 				'authoritaire_memberships',
 				'authorizable_id'
-    		)
-    		->where('authorizable_type', '=', get_called_class())
-    	;
-    }
+			)
+			->where('authorizable_type', '=', get_called_class())
+		;
+	}
 
     // Adds a row to the join table to make the user a member of a role.
     public function addRole(Role $role) {
@@ -30,21 +30,21 @@ trait Authorizable {
 		$this->memberships()->save($membership);
     }
 
-    /*
-    // This is one possible usage.
-    public function roles() {
+	/*
+	// This is one possible usage.
+	public function roles() {
 		return $this
 			->morphManyToMany(
 				'Atrauzzi\Authoritaire\Model\Role',	// Model to relate to.
 				'authorizable',						// Morph label.
 				'authoritaire_memberships'			// Join table
 			)
-    	;
-    }
+		;
+	}
 	*/
-    //
-   	//
-   	//
+	//
+	//
+	//
 
 	public function permissions() {
 		return $this
