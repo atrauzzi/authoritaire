@@ -23,21 +23,23 @@ trait Authorizable {
 		;
 	}
 
-	// Adds a row to the join table to make the user a member of a role.
+	// Adds a row to the join table to make the authorizable a member of a role.
 	public function addRole(Role $role) {
+
 		$membership = new Membership();
 		$role->memberships()->save($membership);
 		$this->memberships()->save($membership);
+
 	}
 
 	/*
-	// This is one possible usage.
+	// This is one possible imagining of many-to-many polymorphic relations.
 	public function roles() {
 		return $this
 			->morphManyToMany(
 				'Atrauzzi\Authoritaire\Model\Role',	// Model to relate to.
 				'authorizable',						// Morph label.
-				'authoritaire_memberships'			// Join table
+				'authoritaire_memberships'			// Join table.
 			)
 		;
 	}
