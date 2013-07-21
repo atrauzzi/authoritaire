@@ -23,12 +23,12 @@ trait Authorizable {
 		;
 	}
 
-    // Adds a row to the join table to make the user a member of a role.
-    public function addRole(Role $role) {
+	// Adds a row to the join table to make the user a member of a role.
+	public function addRole(Role $role) {
 		$membership = new Membership();
 		$role->memberships()->save($membership);
 		$this->memberships()->save($membership);
-    }
+	}
 
 	/*
 	// This is one possible usage.
@@ -70,21 +70,21 @@ trait Authorizable {
 
         return false;
 
-    }
+	}
 
-    public function can($checkPermissions) {
+	public function can($checkPermissions) {
 
- 		$checkPermissions = is_array($checkPermissions) ? $checkPermissions : func_get_args();
- 		$permissions = $this
- 			->permissions()
- 			->lists('name')
- 		;
+		$checkPermissions = is_array($checkPermissions) ? $checkPermissions : func_get_args();
+		$permissions = $this
+			->permissions()
+			->lists('name')
+		;
 
- 		if(array_intersect($checkPermissions, $permissions) == $checkPermissions)
- 			return true;
+		if(array_intersect($checkPermissions, $permissions) == $checkPermissions)
+			return true;
 
-        return false;
+		return false;
 
-    }
+	}
 
 }
