@@ -16,39 +16,40 @@ And then add the [trait](http://goo.gl/Z62lC) `Authorizable` to any model you wi
 
   use Atrauzzi\Authoritaire\Model\Authorizable;
   
-  class User implements UserInterface, RemindableInterface {
-  
-    use Authorizable;
-  
+    class User implements UserInterface, RemindableInterface {
+          
+      use Authorizable;
+      
+      // ...
 
 You can create new `Permissions` by instantiating them and relating them to a `Role`.  
 
-  $eatPlants = Atrauzzi\Authoritaire\Model\Permission::create([
-    'name' => 'Eat Plants'
-  ]);
-
-  $vegetarian = Atrauzzi\Authoritaire\Model\Role::create([
-    'name' => 'Vegetarian',
-    'description' => 'Does not eat meat.'
-  ]);
-  $vegetarian->permissions()->save($eatPlants);
+    $eatPlants = Atrauzzi\Authoritaire\Model\Permission::create([
+      'name' => 'Eat Plants'
+    ]);
+    
+    $vegetarian = Atrauzzi\Authoritaire\Model\Role::create([
+      'name' => 'Vegetarian',
+      'description' => 'Does not eat meat.'
+    ]);
+    $vegetarian->permissions()->save($eatPlants);
 
 
 You can grant authorizables membership to `Roles` from either side using `addRole()` from `Authorizable` or `addAuthorizable()` from `Role`:
 
-  $a = MyAuthorizableClass::first();
-  $r = Atrauzzi\Authoritaire\Model\Role::where('name', '=', 'Vegetarian')->first();
-  
-  // Add from authorizable-side.
-  $a->addRole($r);
-  // Or add from role-side.
-  $r->addAuthorizable($a);
+    $a = MyAuthorizableClass::first();
+    $r = Atrauzzi\Authoritaire\Model\Role::where('name', '=', 'Vegetarian')->first();
+    
+    // Add from authorizable-side.
+    $a->addRole($r);
+    // Or add from role-side.
+    $r->addAuthorizable($a);
 
 Performing checks is as simple as asking the user if they are either a member of a role or have access to a permission.  Authoritaire will take care of everything.
 
-  $u->is('Vegetarian');     // true
-  $u->can('Eat Plants');    // true
-  $u->is('Administrator');  // false
+    $u->is('Vegetarian');     // true
+    $u->can('Eat Plants');    // true
+    $u->is('Administrator');  // false
 
 
 ## Currently
