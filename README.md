@@ -36,7 +36,7 @@ You can create new `Permissions` by instantiating them and relating them to a `R
 
 You can grant authorizables membership to `Roles` from either side using `addRole()` from `Authorizable` or `addAuthorizable()` from `Role`:
 
-    $a = MyAuthorizableClass::first();
+    $a = User::first();
     $r = Atrauzzi\Authoritaire\Model\Role::where('name', '=', 'Vegetarian')->first();
     
     // Add from authorizable-side.
