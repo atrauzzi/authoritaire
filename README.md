@@ -1,4 +1,4 @@
-# Authoritaire - Laravel 4 Auth Package
+# Authoritaire - Authorization for Eloquent Models
 
 Authoritaire is an attempt to create an [orthogonal](http://goo.gl/JXLzBm) simple authorization library.
 
