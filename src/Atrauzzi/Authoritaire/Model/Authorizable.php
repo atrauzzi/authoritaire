@@ -1,5 +1,6 @@
 <?php namespace Atrauzzi\Authoritaire\Model;
 
+use Illuminate\Support\Collection;
 use Atrauzzi\Authoritaire\Model\Membership;
 use Atrauzzi\Authoritaire\Model\Role;
 
@@ -32,6 +33,18 @@ trait Authorizable {
 
 	}
 
+	public function permissions() {
+
+		$permissions = new Collection();
+
+		// I'm not sure why, but the Eloquent nested `fetch()` system seems broken.
+		foreach($this->roles()->get() as $role)
+			$permissions = $permissions->merge($role->permissions);
+
+		return $permissions;
+
+	}
+
 	/*
 	// This is one possible imagining of many-to-many polymorphic relations.
 	public function roles() {
@@ -47,13 +60,6 @@ trait Authorizable {
 	//
 	//
 	//
-
-	public function permissions() {
-		return $this
-			->roles()
-			->permissions()
-		;
-	}
 
 	public function memberships() {
 		return $this->morphMany('Atrauzzi\Authoritaire\Model\Membership', 'authorizable');
