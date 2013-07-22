@@ -10,7 +10,7 @@ Authoritaire facilitates role-based and permissions-per-role authorization check
 
 Using Authoritaire is as simple as running the migration:
 
-  ./artisan migrate --package="atrauzzi/authoritaire"
+    ./artisan migrate --package="atrauzzi/authoritaire"
 
 And then add the [trait](http://goo.gl/Z62lC) `Authorizable` to any model you wish to perform permission checks on.
 
