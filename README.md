@@ -47,10 +47,12 @@ You can grant authorizables membership to `Roles` from either side using `addRol
 
 Performing checks is as simple as asking the user if they are either a member of a role or have access to a permission.  Authoritaire will take care of everything.
 
-    $u->is('Vegetarian');     // true
-    $u->can('Eat Plants');    // true
-    $u->is('Administrator');  // false
-
+    $u->is('Vegetarian');                       // true
+    $u->can('Eat Plants');                      // true
+    $u->is('Administrator');                    // false
+    
+    // You can also perform checks for a set of permissions or roles.
+    $u->is(['Administrator', 'Vegetarian']);    // false
 
 ## Currently
 This version of Authoritaire makes use of some workarounds due to [limitations in Laravel 4's polymorphic relations](https://github.com/laravel/framework/issues/1922).  As such, one join table has to be more directly manipulated than I would have liked.
