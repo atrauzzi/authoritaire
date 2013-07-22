@@ -14,10 +14,9 @@ Using Authoritaire is as simple as running the migration:
 
 And then add the [trait](http://goo.gl/Z62lC) `Authorizable` to any model you wish to perform permission checks on.
 
-  use Atrauzzi\Authoritaire\Model\Authorizable;
+    use Atrauzzi\Authoritaire\Model\Authorizable;
   
     class User implements UserInterface, RemindableInterface {
-          
       use Authorizable;
       
       // ...
