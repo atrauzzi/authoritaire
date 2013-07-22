@@ -20,7 +20,6 @@ And then add the [trait](http://goo.gl/Z62lC) `Authorizable` to any model you wi
   
     use Authorizable;
   
-  // ...
 
 You can create new `Permissions` by instantiating them and relating them to a `Role`.  
 
