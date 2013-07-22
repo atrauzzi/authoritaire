@@ -1,6 +1,7 @@
 <?php namespace Atrauzzi\Authoritaire\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Atrauzzi\Authoritaire\Model\Membership;
 use \ReflectionClass;
 use \Exception;
@@ -25,6 +26,17 @@ class Role extends Model {
 
 	// A read-only "relation" to obtain all current authorizables.
 	public function authorizables() {
+
+		// The problem here is that I can't `fetch()` polymorphic relations.
+		// So instead I get every instance of the join table model and dereference.
+
+		$authorizables = new Collection();
+
+		foreach($this->memberships as $membership)
+			$authorizables[] = $membership->authorizable;
+
+		return $authorizables;
+
 	}
 
 	// Adds a row to the join table to make the authorizable a member of a role.
