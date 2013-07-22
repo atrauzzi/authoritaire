@@ -5,7 +5,7 @@ Authoritaire is an attempt to create an [orthogonal](http://goo.gl/JXLzBm) simpl
 Authoritaire facilitates role-based and permissions-per-role authorization checks.  Many systems can get by using only roles, however if you need more fine-grained control over things, permissions are available.
 
 
-# Usage
+## Usage
 
 Using Authoritaire is as simple as running the migration:
 
@@ -52,14 +52,26 @@ Performing checks is as simple as asking the user if they are either a member of
     // You can also perform checks for a set of permissions or roles.
     $u->is(['Administrator', 'Vegetarian']);    // false
 
-## Currently
+### Currently
 This version of Authoritaire makes use of some workarounds due to [limitations in Laravel 4's polymorphic relations](https://github.com/laravel/framework/issues/1922).  As such, one join table has to be more directly manipulated than I would have liked.
 
 
-# Notes
+## License
 
-Authoritaire is created by [Alexander Trauzzi](http://goo.gl/nHw4u).
+The Laravel framework is open-sourced software license under the [MIT license](http://goo.gl/tuwnQ)
+
+This project is too to ensure maximum compatibility.
+
+## Meta
+
+I'm interested in hearing feedback and suggestions about this package.  Please feel free to submit a ticket at any time.
+
+Visit authoritaire:
+
+* ...[on packagist](https://packagist.org/packages/atrauzzi/authoritaire)
+
+* ...[at Sensio Labs Connect](https://connect.sensiolabs.com/profile/omega/project/atrauzzi-authoritaire)
+
+Authoritaire is made by [Alexander Trauzzi](http://goo.gl/QabWv)
 
 A big thank you to [Todd Francis](http://goo.gl/x3MAuE) for his original work on [Verify-L4](http://goo.gl/NlDoFl)!  While I didn't keep the lion's share of his work, it has mostly inspired the schema.
-
-Please feel free to open a ticket with bug and improvement requests!
