@@ -1,4 +1,4 @@
-# Authoritaire - Authorization for Eloquent Models
+# Authorization for Eloquent Models
 
 Authoritaire is an attempt to create an [orthogonal](http://goo.gl/JXLzBm) simple authorization library.  The premise came after seeing many Laravel 4 user libraries that couple too tightly with projects and attempt to do too much.
 
