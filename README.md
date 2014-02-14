@@ -12,7 +12,7 @@ Using Authoritaire is as simple as running the migration:
     ./artisan migrate --package="atrauzzi/authoritaire"
 
 
-Implement the [interface] `Authorizable` And then add the [trait](http://goo.gl/Z62lC) `AuthorizableImpl` to any model you wish to perform permission checks on.
+Implement the [interface](http://goo.gl/tc4e6) `Authorizable` And then add the [trait](http://goo.gl/Z62lC) `AuthorizableImpl` to any model you wish to perform permission checks on.
 
     use Atrauzzi\Authoritaire\Model\AuthorizableImpl;
   
