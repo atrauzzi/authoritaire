@@ -44,8 +44,8 @@ class Role extends Model {
 
 		// Not big on putting this in the model, but it's helpful.
 		$authorizableMeta = new ReflectionClass($authorizable);
-		if(!in_array('Authorizable', $authorizableMeta->getTraits()))
-			throw new Exception(sprintf('The class %s does not use the Authorizable trait.', get_class($authorizable)));
+		if(!in_array('AuthorizableImpl', $authorizableMeta->getTraits()))
+			throw new Exception(sprintf('The class %s does not use the AuthorizableImpl trait.', get_class($authorizable)));
 
 		$membership = new Membership();
 		$authorizable->memberships()->save($membership);
