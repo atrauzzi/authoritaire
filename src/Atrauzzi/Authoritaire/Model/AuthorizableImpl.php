@@ -70,6 +70,10 @@ trait AuthorizableImpl {
 		return $this->morphMany('Atrauzzi\Authoritaire\Model\Membership', 'authorizable');
 	}
 
+	/**
+	 * @param string[]|string $checkRoles
+	 * @return bool
+	 */
 	public function is($checkRoles) {
 
  		$checkRoles = is_array($checkRoles) ? $checkRoles : func_get_args();
@@ -85,6 +89,10 @@ trait AuthorizableImpl {
 
 	}
 
+	/**
+	 * @param string[]|string $checkPermissions
+	 * @return bool
+	 */
 	public function can($checkPermissions) {
 
 		$checkPermissions = is_array($checkPermissions) ? $checkPermissions : func_get_args();

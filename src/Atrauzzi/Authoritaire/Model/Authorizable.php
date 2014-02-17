@@ -1,5 +1,7 @@
 <?php namespace Atrauzzi\Authoritaire\Model;
 
+use Atrauzzi\Authoritaire\Model\Role;
+
 
 /**
  * Interface models must implement to access the roles/permissions system
@@ -11,14 +13,22 @@ interface Authorizable {
 
     public function roles();
 
-    public function addRole();
+    public function addRole(Role $role);
 
     public function memberships();
 
     public function permissions();
 
-    public function is();
+	/**
+	 * @param string[]|string $checkRoles
+	 * @return bool
+	 */
+	public function is($checkRoles);
 
-    public function can();
+	/**
+	 * @param string[]|string $checkPermissions
+	 * @return bool
+	 */
+	public function can($checkPermissions);
 
 }
