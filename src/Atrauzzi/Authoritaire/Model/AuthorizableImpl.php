@@ -1,8 +1,7 @@
 <?php namespace Atrauzzi\Authoritaire\Model;
 
 use Illuminate\Support\Collection;
-use Atrauzzi\Authoritaire\Model\Membership;
-use Atrauzzi\Authoritaire\Model\Role;
+
 
 /**
  * Trait to include within the model implementing the Authorizable Interface

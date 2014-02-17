@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71349853-5e69-4fba-b243-aec34deb33f1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/Authorizable.php" afterPath="$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/Authorizable.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/AuthorizableImpl.php" afterPath="$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/AuthorizableImpl.php" />
     </list>
     <ignored path="authoritaire.iws" />
@@ -26,19 +25,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Authorizable.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Authorizable.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/Authorizable.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="7" selection-start="411" selection-end="411" vertical-scroll-proportion="0.3398058" vertical-offset="0" max-vertical-offset="927">
+            <state line="21" column="7" selection-start="411" selection-end="411" vertical-scroll-proportion="-12.115385" vertical-offset="0" max-vertical-offset="585">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthorizableImpl.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AuthorizableImpl.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/AuthorizableImpl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="0" selection-start="1606" selection-end="1606" vertical-scroll-proportion="-12.0" vertical-offset="663" max-vertical-offset="1725">
+            <state line="3" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.048543688" vertical-offset="0" max-vertical-offset="1740">
               <folding />
             </state>
           </provider>
@@ -214,16 +213,16 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/AuthorizableImpl.php">
+    <entry file="file://$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/Authorizable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="1606" selection-end="1606" vertical-scroll-proportion="-12.0" vertical-offset="663" max-vertical-offset="1725">
+        <state line="21" column="7" selection-start="411" selection-end="411" vertical-scroll-proportion="-12.115385" vertical-offset="0" max-vertical-offset="585">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/Authorizable.php">
+    <entry file="file://$PROJECT_DIR$/src/Atrauzzi/Authoritaire/Model/AuthorizableImpl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="7" selection-start="411" selection-end="411" vertical-scroll-proportion="0.3398058" vertical-offset="0" max-vertical-offset="927">
+        <state line="3" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.048543688" vertical-offset="0" max-vertical-offset="1740">
           <folding />
         </state>
       </provider>
