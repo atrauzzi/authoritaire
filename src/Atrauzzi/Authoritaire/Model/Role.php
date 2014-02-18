@@ -40,19 +40,10 @@ class Role extends Model {
 	}
 
 	// Adds a row to the join table to make the authorizable a member of a role.
-	public function addAuthorizable(Model $authorizable) {
-
-		if($authorizable instanceof AuthorizableImpl)
-        {
-            $membership = new Membership();
-            $authorizable->memberships()->save($membership);
-            $this->memberships()->save($membership);
-        }
-        else
-        {
-            throw new Exception(sprintf('The class %s does not use the AuthorizableImpl trait.', get_class($authorizable)));
-        }
-
+	public function addAuthorizable(Authorizable $authorizable) {
+		$membership = new Membership();
+		$authorizable->memberships()->save($membership);
+		$this->memberships()->save($membership);
 	}
 
 	/*
